@@ -41,7 +41,7 @@ Point `readme-ai` at a GitHub URL or a local folder, and it analyses your projec
 pip install readme-ai
 
 # From source (recommended for now)
-git clone https://github.com/yourusername/readme-ai.git
+git clone https://github.com/hevinbryant/readme-ai.git
 cd readme-ai
 pip install -e .
 ```
@@ -163,7 +163,7 @@ Contributions are welcome! Please open an issue first to discuss what you'd like
 
 ```bash
 # Fork the repo, then:
-git clone https://github.com/yourusername/readme-ai.git
+git clone https://github.com/hevinbryant/readme-ai.git
 cd readme-ai
 pip install -e ".[dev]"
 
