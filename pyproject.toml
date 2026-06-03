@@ -1,0 +1,86 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# ── Project metadata ───────────────────────────────────────────────────────────
+[project]
+name = "readme-ai"
+version = "0.1.0"
+description = "Automatically generate professional README files for any code repository using AI"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "readme-ai contributors" }]
+keywords = ["readme", "ai", "documentation", "openai", "anthropic", "llm", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.9"
+
+dependencies = [
+    "click>=8.1",
+    "requests>=2.28",
+    "rich>=13.0",
+    "openai>=1.0",
+    "anthropic>=0.25",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "black>=24.0",
+    "ruff>=0.4",
+    "mypy>=1.9",
+    "tomli>=2.0; python_version < '3.11'",
+]
+
+# ── CLI entry point ────────────────────────────────────────────────────────────
+[project.scripts]
+readme-ai = "readme_ai.cli:main"
+
+# ── Project URLs ───────────────────────────────────────────────────────────────
+[project.urls]
+Homepage    = "https://github.com/yourusername/readme-ai"
+Repository  = "https://github.com/yourusername/readme-ai"
+"Bug Tracker" = "https://github.com/yourusername/readme-ai/issues"
+
+# ── Hatchling ──────────────────────────────────────────────────────────────────
+[tool.hatch.build.targets.wheel]
+packages = ["readme_ai"]
+
+# ── Ruff (linter) ─────────────────────────────────────────────────────────────
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
+
+# ── Black (formatter) ─────────────────────────────────────────────────────────
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+
+# ── mypy ──────────────────────────────────────────────────────────────────────
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
+strict = false
+
+# ── pytest ────────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-v --tb=short"
